@@ -42,26 +42,28 @@ call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox'
 
 " Status bar
-"Plug 'itchyny/lightline.vim'
-"Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Side bar (files)
-Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree'
-Plug 'preservim/nerdcommenter'
+Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'preservim/nerdcommenter'
 
 " Git status
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
-" Linters, Formatters & Fixers
+" Language specific
+" [Kotlin]
+Plug 'udalov/kotlin-vim'
+" [Python]
 Plug 'psf/black', { 'tag': '19.10b0'}
+
+"Linters, Formatters & Fixers
 Plug 'dense-analysis/ale'
 
-" Completion & Language servers
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -70,12 +72,19 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-Plug 'zchee/deoplete-jedi'
+"Plug 'prabirshrestha/async.vim'
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'ryanolsonx/vim-lsp-python'
+"Plug 'lighttiger2505/deoplete-vim-lsp'
+
+"Plug 'zchee/deoplete-jedi'
+"Plug 'davidhalter/jedi-vim'
+
 Plug 'jiangmiao/auto-pairs'
-Plug 'davidhalter/jedi-vim'
 
 " Fuzzy finders
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 
@@ -96,11 +105,10 @@ au FocusGained,BufEnter * checktime
  "With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
 let mapleader =  " "
-"let mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
-
+noremap a $a
 " :W sudo saves the file
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
@@ -180,7 +188,6 @@ endif
 " Add a bit extra margin to the left
 set foldcolumn=1
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -235,6 +242,7 @@ set smarttab
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 
 " Linebreak on 500 characters
 set lbr
@@ -242,8 +250,7 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
-
+set nowrap "Wrap lines
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -257,9 +264,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-"map <space> /
-"map <C-space> ?
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -512,53 +516,35 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
- "Thinline Status bar
-"let g:lightline = {}
-"let g:lightline.colorscheme = 'gruvbox'
 
-
-" ALE * other linters...
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
+"" ALE * other linters...
+let g:ale_echo_msg_error_str = 'Error'
+let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'python': ['pylint'],
+\   'python': ['pyls'],
 \}
+
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
-\   'python': ['black']
+\   'python': ['black','isort']
 \}
-let g:ale_fix_on_save = 0
+let g:ale_python_black_options = '--line-length=110'
+let g:ale_fix_on_save = 1
 
-map <leader>g :ALEGoToDefinition
-
-
-" Autoformatters
-" [Black]
-" Run on save
-autocmd BufWritePre *.py execute ':Black'
-let g:black_linelength = 110
-
-" YCM extra configs
-"let g:ycm_autoclose_preview_window_after_completion=1
-"map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
+map <leader>gd :ALEGoToDefinition<cr>
 
 " Autocompletter[Deoplete]
+
+call deoplete#custom#option('sources', {
+"\ '_': ['ale',],
+\})
+
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 set splitright
 set splitbelow
-
-"Go to definition using jedi-vim
-" disable autocompletion, cause we use deoplete for completion
-let g:jedi#completions_enabled = 0
-let g:jedi#use_splits_not_buffers = "right"
-let g:jedi#documentation_command = '<Leader>_K'
-let g:jedi#auto_close_doc = 1
-
-
