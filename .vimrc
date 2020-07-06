@@ -52,6 +52,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'preservim/nerdcommenter'
 
 " Git status
+Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 
@@ -60,8 +61,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'udalov/kotlin-vim'
 " [Python]
 Plug 'psf/black', { 'tag': '19.10b0'}
-
-"Linters, Formatters & Fixers
+" [Rust/Toml]
+Plug 'cespare/vim-toml'
+" Improved syntax highlighting for Python
+Plug 'vim-python/python-syntax'
+" Linters, Formatters & Fixers
 Plug 'dense-analysis/ale'
 
 if has('nvim')
@@ -72,20 +76,17 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
-"Plug 'prabirshrestha/async.vim'
-"Plug 'prabirshrestha/vim-lsp'
-"Plug 'ryanolsonx/vim-lsp-python'
-"Plug 'lighttiger2505/deoplete-vim-lsp'
-
-"Plug 'zchee/deoplete-jedi'
-"Plug 'davidhalter/jedi-vim'
-
 Plug 'jiangmiao/auto-pairs'
 
 " Fuzzy finders
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" Sugar
+Plug 'machakann/vim-highlightedyank'
+
 call plug#end()
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -108,8 +109,8 @@ let mapleader =  " "
 
 " Fast saving
 nmap <leader>w :w!<cr>
-noremap a $a
-" :W sudo saves the file
+
+"" :W sudo saves the file
 " (useful for handling the permission-denied error)
 command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 
@@ -440,7 +441,8 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 " Share system clipboard
-set clipboard=unnamed
+set clipboard+=unnamedplus
+"set clipboard=unnamed
 
 " Show line numbers
 set number
@@ -448,7 +450,10 @@ set number
 " Show numbers relative to cursor
 set relativenumber
 
-" NERDTree Stuff
+" Set highlightedyank time to 100ms
+let g:highlightedyank_highlight_duration = 100
+
+"" NERDTree Stuff
 nmap <C-n> :NERDTreeToggle<CR>
 let NERDTreeShowHidden = 0
 let NERDTreeShowLineNumbers = 0
@@ -480,8 +485,13 @@ let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 let g:gruvbox_termcolors = 256
 
-:set laststatus=2
+set laststatus=2
 
+" Better Python syntax highlighting.
+let g:python_highlight_all = 1
+augroup requirements_txt_ft
+    autocmd BufNewFile,BufRead requirements.txt set filetype=python
+augroup END
 
 " Ariline (statusbar)
 let g:airline_theme='gruvbox'
@@ -525,22 +535,24 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'python': ['pyls'],
+\   'rust': ['rls']
 \}
 
+let g:ale_completion_enbled = 0 " Turn off in favor of deoplete
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
-\   'python': ['black','isort']
+\   'python': ['black'],
+\   'rust': ['rustfmt']
 \}
 let g:ale_python_black_options = '--line-length=110'
 let g:ale_fix_on_save = 1
 
-map <leader>gd :ALEGoToDefinition<cr>
 
 " Autocompletter[Deoplete]
-
+map <leader>gd :ALEGoToDefinition<cr>
 call deoplete#custom#option('sources', {
-"\ '_': ['ale',],
+\ '_': ['ale'],
 \})
 
 let g:deoplete#enable_at_startup = 1

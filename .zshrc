@@ -101,8 +101,6 @@ alias dotconfig='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 alias vim=nvim
 
 # fzf
-#export FZF_DEFAULT_COMMAND="fd . $HOME"
-#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-#export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+export FZF_DEFAULT_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || bat --style=numbers --color=always --line-range :500 {} || tree -C {}) 2> /dev/null | head -300'"
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh

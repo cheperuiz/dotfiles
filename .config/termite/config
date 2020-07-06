@@ -6,7 +6,8 @@ allow_bold = true
 #cell_width_scale = 1.0
 clickable_url = true
 dynamic_title = true
-font = FiraCode Nerd Font 10
+#font = FiraCode Nerd Font 10
+font = Fira Code Retina 9
 #fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
@@ -44,8 +45,7 @@ cursor_shape = block
 [colors]
 
 #background= #1d2021
-background= rgba(29, 32, 33,0.9)
-
+background          = rgba(29, 32, 33,0.9)
 foreground= #ebdbb2
 
 color0=  #282828
