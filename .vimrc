@@ -545,6 +545,7 @@ let g:ale_fixers = {
 \   'python': ['black'],
 \   'rust': ['rustfmt']
 \}
+
 let g:ale_python_black_options = '--line-length=110'
 let g:ale_fix_on_save = 1
 
