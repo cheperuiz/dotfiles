@@ -21,10 +21,13 @@ font pango:Fira Code Retina 8
 for_window [class=".*"] border pixel 0
 
 # Gaps
-gaps inner 10
-gaps outer -4
+gaps inner 12
+gaps outer 8
+gaps bottom 40
+gaps top 4
 
-smart_gaps on
+#smart_gaps on
+#smart_gaps inverse_outer
 
 # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
@@ -73,13 +76,13 @@ mode "$mode_gaps_outer" {
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 #exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id xautolock -time 10 -locker "betterlockscreen --lock blur"  
+exec --no-startup-id xautolock -time 10 -locker "betterlockscreen --lock blur"
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
-exec /usr/bin/blueman-applet
-exec --no-startup-id "picom -b"
+#exec /usr/bin/blueman-applet
+exec --no-startup-id "picom -b --experimental-backend"
 exec --no-startup-id "feh --bg-max --randomize --no-fehbg ~/.wallpaper/*"
 
 
@@ -116,7 +119,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec "rofi -combi-modi window,drun -show combi"
-bindsym $mod+d exec --no-startup-id "rofi -show drun -font \\"DejaVu 9\\" -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
+bindsym $mod+d exec --no-startup-id "rofi -modi run#drun -show drun -show-icons -drun-icon-theme -drun-show-actions -font \\"Fira Code Retina 9\\" terminal $TERMINAL -run-shell-command '{terminal} -e \\" {cmd}; read -n 1 -s\\"'"
 
 #bindsym $mod+d exec dmenu_run
 #
@@ -258,7 +261,6 @@ client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
 
 client.background       #F8F8F2
 
-
 #bar {
 #	status_command  i3blocks -c ~/.config/i3/i3blocks/config
 #
@@ -278,4 +280,3 @@ client.background       #F8F8F2
 #$exe_always pkill -SIGRTMIN+11 i3blocks # send numlock signal to i3blocks
 #$exe_always pkill -SIGRTMIN+10 i3blocks # send volume signal to i3blocks
 #$exe_always dunst -config ~/.config/dunst/dunstrc
-

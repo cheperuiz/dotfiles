@@ -489,9 +489,6 @@ set laststatus=2
 
 " Better Python syntax highlighting.
 let g:python_highlight_all = 1
-augroup requirements_txt_ft
-    autocmd BufNewFile,BufRead requirements.txt set filetype=python
-augroup END
 
 " Ariline (statusbar)
 let g:airline_theme='gruvbox'
@@ -534,7 +531,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'python': ['pyls'],
+\   'python': ['pyls','mypy'],
 \   'rust': ['rls']
 \}
 
@@ -552,9 +549,13 @@ let g:ale_fix_on_save = 1
 
 " Autocompletter[Deoplete]
 map <leader>gd :ALEGoToDefinition<cr>
+map <leader>gr :ALEFindReferences<cr>
 call deoplete#custom#option('sources', {
 \ '_': ['ale'],
 \})
+
+map <leader>f :Files<cr>
+map <leader>fg :GFiles<cr>
 
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
