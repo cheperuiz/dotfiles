@@ -93,8 +93,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 setopt rm_star_silent
-export TERM=xterm-color
-export TERMINAL=termite
+export TERM=alacritty
+export TERMINAL=alacritty
 
 # Git repo
 alias dotconfig='/usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME'

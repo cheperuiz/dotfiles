@@ -22,9 +22,9 @@ for_window [class=".*"] border pixel 0
 
 # Gaps
 gaps inner 12
-gaps outer 8
+gaps outer 4
 gaps bottom 40
-gaps top 4
+gaps top 2
 
 #smart_gaps on
 #smart_gaps inverse_outer
@@ -106,7 +106,7 @@ bindsym $mod+Shift+p exec --no-startup-id i3-msg workspace 2 && code
 floating_modifier $mod
 
  #start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # Lock using i3lock
 # bindsym $mod+Shift+q exec i3lock -c 0f0f0f
