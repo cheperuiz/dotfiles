@@ -227,8 +227,13 @@ set ffs=unix,dos,mac
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git etc. anyway...
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
+
+set updatetime=300
+set timeoutlen=500
+
+set pumheight=10
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -440,6 +445,16 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+" Use mouse
+set mouse=a
+
+" Set new splits to the right and below
+set splitright
+set splitbelow
+
+" Always show tabs
+set showtabline=2
+
 " Share system clipboard
 set clipboard+=unnamedplus
 "set clipboard=unnamed
@@ -464,7 +479,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 map <C-m> <plug>NERDCommenterToggle
 
 " Nerdtree Git Plugin
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -523,27 +538,37 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+" FZF settings
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
 
 "" ALE * other linters...
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''
+let g:ale_set_balloons = 1
+
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'json': ['jsonlint'],
 \   'python': ['pyls','mypy'],
 \   'rust': ['rls']
 \}
 
-let g:ale_completion_enbled = 0 " Turn off in favor of deoplete
+let g:ale_completion_enbled = 0
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
+\   'javascript': ['prettier'],
+\   'json': ['prettier'],
 \   'python': ['black'],
 \   'rust': ['rustfmt']
 \}
 
 let g:ale_python_black_options = '--line-length=110'
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
 let g:ale_fix_on_save = 1
 
 
@@ -560,5 +585,3 @@ map <leader>fg :GFiles<cr>
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-set splitright
-set splitbelow

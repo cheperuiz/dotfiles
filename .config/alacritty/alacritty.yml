@@ -12,7 +12,7 @@ env:
   # available, otherwise `xterm-256color` is used.
   TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Specified in number of columns/lines, not pixels.
@@ -33,9 +33,9 @@ env:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  #padding:
-  #  x: 0
-  #  y: 0
+  padding:
+    x: 4
+    y: 4
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -298,7 +298,7 @@ colors:
     - {index: 19, color: '0x4e4e4e'}
     - {index: 20, color: '0x949494'}
     - {index: 21, color: '0xd5c4a1'}
-background_opacity: 0.9
+background_opacity: 0.95
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"

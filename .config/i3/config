@@ -21,10 +21,10 @@ font pango:Fira Code Retina 8
 for_window [class=".*"] border pixel 0
 
 # Gaps
-gaps inner 12
-gaps outer 4
-gaps bottom 40
-gaps top 2
+gaps inner 6
+gaps outer 2
+gaps bottom 36
+gaps top 0
 
 #smart_gaps on
 #smart_gaps inverse_outer
@@ -66,6 +66,8 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+#Polybar to replace the default i3statusbar:
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -86,8 +88,6 @@ exec --no-startup-id "picom -b --experimental-backend"
 exec --no-startup-id "feh --bg-max --randomize --no-fehbg ~/.wallpaper/*"
 
 
-#Polybar to replace the default i3statusbar:
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 
 # Use pactl to adjust volume in PulseAudio.
@@ -98,8 +98,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Set shortcuts for Apps:
-bindsym $mod+Shift+f exec --no-startup-id firefox --new-window
-bindsym $mod+Shift+m exec --no-startup-id firefox --new-window https://music.amazon.com
+bindsym $mod+Shift+f exec --no-startup-id firefox-nightly --new-window
+bindsym $mod+Shift+m exec --no-startup-id firefox-nightly --new-window https://music.amazon.com
 bindsym $mod+Shift+p exec --no-startup-id i3-msg workspace 2 && code
 
 # Use Mouse+$mod to drag floating windows to their wanted position
