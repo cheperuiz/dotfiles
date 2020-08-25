@@ -98,8 +98,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Set shortcuts for Apps:
-bindsym $mod+Shift+f exec --no-startup-id firefox-nightly --new-window
-bindsym $mod+Shift+m exec --no-startup-id firefox-nightly --new-window https://music.amazon.com
+bindsym $mod+Shift+f exec --no-startup-id chromium --new-window
+bindsym $mod+Shift+m exec --no-startup-id i3-msg workspace 6 && chromium --new-window --app=https://music.amazon.com
 bindsym $mod+Shift+p exec --no-startup-id i3-msg workspace 2 && code
 
 # Use Mouse+$mod to drag floating windows to their wanted position
