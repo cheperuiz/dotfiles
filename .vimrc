@@ -49,7 +49,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'preservim/nerdcommenter'
+"Plug 'preservim/nerdcommenter'
 
 " Git status
 Plug 'tpope/vim-fugitive'
@@ -63,7 +63,12 @@ Plug 'udalov/kotlin-vim'
 Plug 'psf/black', { 'tag': '19.10b0'}
 " [Rust/Toml]
 Plug 'cespare/vim-toml'
-" Improved syntax highlighting for Python
+" [C#]
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'nickspoons/vim-sharpenup'
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
+"Improved syntax highlighting for Python
 Plug 'vim-python/python-syntax'
 " Linters, Formatters & Fixers
 Plug 'dense-analysis/ale'
@@ -476,7 +481,7 @@ let g:NERDTreeGitStatusWithFlags = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "Nerd commenter
-map <C-m> <plug>NERDCommenterToggle
+"map <C-m> <plug>NERDCommenterToggle
 
 " Nerdtree Git Plugin
 let g:NERDTreeGitStatusIndicatorMapCustom = {
@@ -542,7 +547,25 @@ let g:airline_symbols.linenr = ''
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
 
-"" ALE * other linters...
+" OmniSharp settings
+let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_selector_findusages = 'fzf'
+let g:OmniSharp_want_snippet = 1
+
+let g:UltiSnipsExpandTrigger="<c-Space>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+"
+" Sharpenup
+
+let g:sharpenup_map_prefix = '<Space>os'
+let g:sharpenup_statusline_opts = { 'Text': '%s (%p/%P)' }
+let g:sharpenup_statusline_opts.Highlight = 0
+
+" ALE * other linters...
 let g:ale_echo_msg_error_str = 'Error'
 let g:ale_echo_msg_warning_str = 'Warning'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -550,15 +573,26 @@ let g:ale_sign_error = ''
 let g:ale_sign_warning = ''
 let g:ale_set_balloons = 1
 
+let g:ale_completion_enbled = 0
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'json': ['jsonlint'],
 \   'python': ['pyls','mypy'],
-\   'rust': ['rls']
+\   'rust': ['rls'],
+\   'cs': ['OmniSharp']
 \}
 
-let g:ale_completion_enbled = 0
+function SetCSSettings()
+
+    call deoplete#enable()
+    call deoplete#custom#option('smart_case', v:true)
+    call deoplete#custom#source('omni', 'functions', { 'cs':  'OmniSharp#Complete' })
+    call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'cs': '[^. *\t]\.\w*',
+        \})
+endfunction
+
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier'],
@@ -575,12 +609,18 @@ let g:ale_fix_on_save = 1
 " Autocompletter[Deoplete]
 map <leader>gd :ALEGoToDefinition<cr>
 map <leader>gr :ALEFindReferences<cr>
-call deoplete#custom#option('sources', {
-\ '_': ['ale'],
-\})
+
 
 map <leader>f :Files<cr>
 map <leader>fg :GFiles<cr>
+
+function ConfigNotCSharpDeopleteSources()
+    if &ft == cs
+        return " Don't run this code if this is a c# file
+    call deoplete#custom#option('sources', {
+\   '_': ['ale'],
+\   })
+endfunction
 
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"

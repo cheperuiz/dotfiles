@@ -115,3 +115,6 @@ PERL_MM_OPT="INSTALL_BASE=/home/pxuser/perl5"; export PERL_MM_OPT;
 # Use Firefox Nightly
 #alias firefox=firefox-nightly
 export MOZ_X11_EGL=1
+
+# Disable .NET telemetry
+export  DOTNET_CLI_TELEMETRY_OPTOUT=1

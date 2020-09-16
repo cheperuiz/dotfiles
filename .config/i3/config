@@ -85,7 +85,7 @@ exec --no-startup-id xautolock -time 10 -locker "betterlockscreen --lock blur"
 exec --no-startup-id nm-applet
 #exec /usr/bin/blueman-applet
 exec --no-startup-id "picom -b --experimental-backend"
-exec --no-startup-id "feh --bg-max --randomize --no-fehbg ~/.wallpaper/*"
+exec --no-startup-id "feh --bg-fill --randomize --no-fehbg ~/.wallpaper/*"
 
 
 
