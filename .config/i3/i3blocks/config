@@ -1,0 +1,44 @@
+# i3blocks config file
+
+# Global properties
+command=$HOME/.config/i3/i3blocks/blocks/$BLOCK_NAME
+separator=false
+separator_block_width=20
+markup=pango
+
+# [title]
+# interval=1
+# min_width=800
+# align=center
+# separator=false
+
+[cpu]
+interval=5
+
+[memory]
+interval=5
+
+[volume]
+instance=Master
+interval=once
+signal=10
+
+[network]
+instance=wlp2s0
+interval=10
+
+[weather]
+instance=3081368
+interval=120
+
+[date]
+interval=1
+
+[time]
+interval=1
+
+[keyindicator]
+instance=NUM
+interval=once
+signal=11
+

@@ -1,3 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/pxuser/csharp/Todos'
+let g:netrw_dirhist_6='/home/pxuser/.config/i3/scripts'
+let g:netrw_dirhist_5='/home/pxuser/.config/i3'
+let g:netrw_dirhist_4='/home/pxuser/csharp/EFDemoApp/EFDataAccessLibrary/DataAccess'
+let g:netrw_dirhist_3='/home/pxuser/csharp/EFDemoApp/EFDataAccessLibrary'
+let g:netrw_dirhist_2='/home/pxuser/csharp/EFDemoApp'
 let g:netrw_dirhist_1='/home/pxuser'

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ICON=$HOME/.config/dunst/icons/system-reboot.png
+
+. $HOME/.bash_profile
+xrdb $HOME/.Xresources
+killall dunst
+i3-msg restart
+
+notify-send 'Restart i3' 'Desktop env restarted' -i $ICON

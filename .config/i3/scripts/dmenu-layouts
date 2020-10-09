@@ -1,0 +1,9 @@
+#!/bin/bash
+
+layouts_dir=$HOME/.config/i3/layouts
+layouts_list=`ls $layouts_dir | grep -v .json`
+layout=`printf "${layouts_list}" | rofi -dmenu -p "Choose layout"`
+
+if [[ $layout != "" ]]; then
+  $layouts_dir/$layout
+fi

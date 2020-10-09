@@ -22,8 +22,21 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Better Syntax Support
     Plug 'sheerun/vim-polyglot'
 
+    " Autocomplete, linter, formatter & magic
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+    " Language specific
+    " [C#]
+    Plug 'OmniSharp/omnisharp-vim'
+    Plug 'nickspoons/vim-sharpenup'
+
+    " Code Snippets
+    Plug 'sirver/ultisnips'
+    Plug 'honza/vim-snippets'
+
     " Sugar
     Plug 'jiangmiao/auto-pairs'
     Plug 'machakann/vim-highlightedyank'
+    Plug 'preservim/nerdcommenter'
 
 call plug#end()
