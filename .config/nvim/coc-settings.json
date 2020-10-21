@@ -5,18 +5,44 @@
     "javascript",
     "graphql",
     "html",
-    "yaml",
     "json",
     "python",
     "rust",
     "kotlin",
     "cs"
   ],
+  "coc.preferences.promptInput": true,
+  "coc.preferences.enableMarkdown": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.errorSign": " ",
+  "diagnostic.warningSign": " ",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": " ",
+
+  "suggest.completionItemKindLabels": {
+    "text": "t",
+    "method": "m",
+    "function": ""
+  },
+
+  "list.indicator": ">",
+  "list.selectedSignText": " ",
 
   "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
   "python.linting.lintOnSave": true,
   "python.linting.pylintEnabled": true,
   "python.linting.mypyEnabled": true,
+  "python.linting.mypyArgs": [
+    "--ignore-missing-imports",
+    "--follow-imports=silent",
+    "--show-column-numbers",
+    "--disallow-untyped-defs",
+    "--disallow-incomplete-defs",
+    "--disallow-untyped-calls",
+    "--check-untyped-defs"
+  ],
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": ["--line-length", "110"],
 

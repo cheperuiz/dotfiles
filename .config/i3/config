@@ -21,8 +21,8 @@ font pango:Fira Code Retina 8
 for_window [class=".*"] border pixel 0
 
 # Gaps
-gaps inner 6
-gaps outer 2
+gaps inner 10
+gaps outer 4
 gaps bottom 36
 gaps top 0
 
