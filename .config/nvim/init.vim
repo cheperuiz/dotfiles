@@ -10,3 +10,4 @@ source $HOME/.config/nvim/vim-plug/coc.vim
 source $HOME/.config/nvim/vim-plug/omnisharp.vim
 source $HOME/.config/nvim/vim-plug/sharpenup.vim
 source $HOME/.config/nvim/vim-plug/ultisnips.vim
+source $HOME/.config/nvim/vim-plug/floaterm.vim

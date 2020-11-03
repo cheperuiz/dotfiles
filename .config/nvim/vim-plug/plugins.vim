@@ -38,5 +38,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jiangmiao/auto-pairs'
     Plug 'machakann/vim-highlightedyank'
     Plug 'preservim/nerdcommenter'
+    
+    Plug 'voldikss/vim-floaterm'
 
 call plug#end()
