@@ -119,3 +119,10 @@ export MOZ_X11_EGL=1
 # Disable .NET telemetry
 export  DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PATH="$PATH:/home/pxuser/.dotnet/tools"
+
+source <(kubectl completion zsh)
+alias k=kubectl
+complete -F __start_kubectl k
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform

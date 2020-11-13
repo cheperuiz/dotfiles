@@ -15,6 +15,7 @@
   "coc.preferences.enableMarkdown": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualTextPrefix": "  ",
   "diagnostic.errorSign": " ",
   "diagnostic.warningSign": " ",
   "diagnostic.infoSign": "",
@@ -29,9 +30,9 @@
   "list.indicator": ">",
   "list.selectedSignText": " ",
 
-  "python.linting.enabled": true,
+  "python.analysis.typeCheckingMode": "strict",
+
   "python.linting.flake8Enabled": true,
-  "python.linting.lintOnSave": true,
   "python.linting.pylintEnabled": true,
   "python.linting.mypyEnabled": true,
   "python.linting.mypyArgs": [
@@ -51,7 +52,7 @@
   "explorer.width": 30,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "<cr>": ["expandable?", "expand", "open"],
     "v": "open:vsplit"
   }
