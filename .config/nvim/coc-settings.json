@@ -14,7 +14,7 @@
   "coc.preferences.promptInput": true,
   "coc.preferences.enableMarkdown": true,
   "diagnostic.virtualText": true,
-  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualTextCurrentLineOnly": true,
   "diagnostic.virtualTextPrefix": "  ",
   "diagnostic.errorSign": " ",
   "diagnostic.warningSign": " ",
@@ -30,11 +30,11 @@
   "list.indicator": ">",
   "list.selectedSignText": " ",
 
-  "python.analysis.typeCheckingMode": "strict",
+  "python.analysis.typeCheckingMode": "basic",
 
   "python.linting.flake8Enabled": true,
   "python.linting.pylintEnabled": true,
-  "python.linting.mypyEnabled": true,
+  "python.linting.mypyEnabled": false,
   "python.linting.mypyArgs": [
     "--ignore-missing-imports",
     "--follow-imports=silent",
