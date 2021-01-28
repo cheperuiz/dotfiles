@@ -1,0 +1,59 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "javascript",
+    "graphql",
+    "html",
+    "json",
+    "python",
+    "rust",
+    "kotlin",
+    "cs"
+  ],
+  "coc.preferences.promptInput": true,
+  "coc.preferences.enableMarkdown": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": true,
+  "diagnostic.virtualTextPrefix": "  ",
+  "diagnostic.errorSign": " ",
+  "diagnostic.warningSign": " ",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": " ",
+
+  "suggest.completionItemKindLabels": {
+    "text": "t",
+    "method": "m",
+    "function": ""
+  },
+
+  "list.indicator": ">",
+  "list.selectedSignText": " ",
+
+  "python.analysis.typeCheckingMode": "basic",
+
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.mypyEnabled": false,
+  "python.linting.mypyArgs": [
+    "--ignore-missing-imports",
+    "--follow-imports=silent",
+    "--show-column-numbers",
+    "--disallow-untyped-defs",
+    "--disallow-incomplete-defs",
+    "--disallow-untyped-calls",
+    "--check-untyped-defs"
+  ],
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "110"],
+
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/utils/snips"],
+
+  "explorer.width": 30,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  }
+}
