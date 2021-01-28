@@ -135,3 +135,4 @@ if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
 fi
 
 alias cat="bat -p"
+export DOCKER_BUILDKIT=1
