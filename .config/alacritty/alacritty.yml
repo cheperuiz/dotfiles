@@ -161,91 +161,55 @@ font:
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
-
-# Colors (Tomorrow Night)
 colors:
-  # COLORSCHEME: base16-gruvbox-dark-pale-256.yml
-  # Default colors
   primary:
-    background: '0x262626'
-    foreground: '0xdab997'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
+    background: '#2e3440'
+    foreground: '#d8dee9'
+    dim_foreground: '#a5abb6'
   cursor:
-    text: '0x262626'
-    cursor: '0xdab997'
-
-  # Normal colors
+    text: '#2e3440'
+    cursor: '#d8dee9'
   vi_mode_cursor:
-    text: CellBackground
-    cursor: CellForeground
-
-  # Selection colors
-  #
-  # Colors which should be used to draw the selection area.
-  #
-  # Allowed values are CellForeground and CellBackground, which reference the
-  # affected cell, or hexadecimal colors like #ff00ff.
+    text: '#2e3440'
+    cursor: '#d8dee9'
   selection:
-    text: CellBackground
-    background: CellForeground
-
-  # Search colors
-  #
-  # Colors used for the search bar and match highlighting.
+    text: CellForeground
+    background: '#4c566a'
   search:
-    # Allowed values are CellForeground and CellBackground, which reference the
-    # affected cell, or hexadecimal colors like #ff00ff.
     matches:
-      foreground: '#000000'
-      background: '#ffffff'
-
+      foreground: CellBackground
+      background: '#88c0d0'
     bar:
-      background: '#c5c8c6'
-      foreground: '#1d1f21'
-
-  # Normal colors
+      background: '#434c5e'
+      foreground: '#d8dee9'
   normal:
-    black: '0x262626'
-    red: '0xd75f5f'
-    green: '0xafaf00'
-    yellow: '0xffaf00'
-    blue: '0x83adad'
-    magenta: '0xd485ad'
-    cyan: '0x85ad85'
-    white: '0xdab997'
-
-  # Bright colors
+    black: '#3b4252'
+    red: '#bf616a'
+    green: '#a3be8c'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    magenta: '#b48ead'
+    cyan: '#88c0d0'
+    white: '#e5e9f0'
   bright:
-    black: '0x8a8a8a'
-    red: '0xd75f5f'
-    green: '0xafaf00'
-    yellow: '0xffaf00'
-    blue: '0x83adad'
-    magenta: '0xd485ad'
-    cyan: '0x85ad85'
-    white: '0xebdbb2'
-
+    black: '#4c566a'
+    red: '#bf616a'
+    green: '#a3be8c'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    magenta: '#b48ead'
+    cyan: '#8fbcbb'
+    white: '#eceff4'
   dim:
-    black: '#131415'
-    red: '#864343'
-    green: '#777c44'
-    yellow: '#9e824c'
-    blue: '#556a7d'
-    magenta: '#75617b'
-    cyan: '#5b7d78'
-    white: '#828482'
-
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '#ff00ff' }`
-  #
-  #indexed_colors: []
-
+    black: '#373e4d'
+    red: '#94545d'
+    green: '#809575'
+    yellow: '#b29e75'
+    blue: '#68809a'
+    magenta: '#8c738c'
+    cyan: '#6d96a5'
+    white: '#aeb3bb'
+# Colors (Tomorrow Night)
 # Bell
 #
 # The bell is rung every time the BEL control character is received.

@@ -10,6 +10,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Gruvebox theme
     Plug 'morhetz/gruvbox'
+    Plug 'arcticicestudio/nord-vim' 
 
     " Airline status bar
     Plug 'vim-airline/vim-airline'
