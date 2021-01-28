@@ -2,7 +2,11 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+<<<<<<< HEAD
 export ZSH="/home/pxuser/.oh-my-zsh"
+=======
+export ZSH="$HOME/.oh-my-zsh"
+>>>>>>> local
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,7 +72,11 @@ fi
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+<<<<<<< HEAD
 plugins=(git)
+=======
+plugins=(git zsh-syntax-highlighting zsh-completions)
+>>>>>>> local
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,7 +105,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+<<<<<<< HEAD
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+=======
+>>>>>>> local
 setopt rm_star_silent
 export TERM=alacritty
 export TERMINAL=alacritty
@@ -111,11 +122,19 @@ export FZF_DEFAULT_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || bat
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
+<<<<<<< HEAD
 PATH="/home/pxuser/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/pxuser/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
 PERL_LOCAL_LIB_ROOT="/home/pxuser/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/pxuser/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/pxuser/perl5"; export PERL_MM_OPT;
+=======
+PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
+>>>>>>> local
 
 
 # Use Firefox Nightly
@@ -124,7 +143,11 @@ export MOZ_X11_EGL=1
 
 # Disable .NET telemetry
 export  DOTNET_CLI_TELEMETRY_OPTOUT=1
+<<<<<<< HEAD
 export PATH="$PATH:/home/pxuser/.dotnet/tools"
+=======
+export PATH="$PATH:$HOME/.dotnet/tools"
+>>>>>>> local
 
 source <(kubectl completion zsh)
 alias k=kubectl
@@ -132,3 +155,12 @@ complete -F __start_kubectl k
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
+<<<<<<< HEAD
+=======
+
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startx
+fi
+
+alias cat="bat -p"
+>>>>>>> local
