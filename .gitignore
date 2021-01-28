@@ -1,7 +1,6 @@
 .Xauthority
 .cache/
 .cargo/
-.config/
 .electron-gyp/
 .lesshst
 .local/
@@ -21,3 +20,7 @@
 .zshrc.pre-oh-my-zsh
 dotfiles/
 certs/
+**/nvim/autoload
+.config/coc
+.config/Franz
+.config/Microsoft
